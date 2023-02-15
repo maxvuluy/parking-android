@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:context=".MainActivity">
+
+	<data>
+
+		<import type="android.view.View" />
+
+		<variable
+			name="viewModel"
+			type="com.github.maxvuluy.parking.login.LoginViewModel" />
+
+	</data>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:padding="48dp">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/layoutInput"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			app:enabled="@{!viewModel.loading}"
+			app:layout_constraintBottom_toTopOf="@id/buttonLogin"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<EditText
+				android:id="@+id/editUsername"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:hint="Username"
+				android:inputType="textEmailAddress"
+				android:text="@={viewModel.username}"
+				android:textSize="24sp"
+				app:layout_constraintBottom_toTopOf="@id/editPassword"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<EditText
+				android:id="@+id/editPassword"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:hint="Password"
+				android:inputType="textPassword"
+				android:text="@={viewModel.password}"
+				android:textSize="24sp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/editUsername" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+		<Button
+			android:id="@+id/buttonLogin"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:text="Login"
+			app:enabled="@{!viewModel.loading}"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/layoutInput" />
+
+		<ProgressBar
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:indeterminate="true"
+			android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE}"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

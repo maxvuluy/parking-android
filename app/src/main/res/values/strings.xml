@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Parking</string>
+
+	<string-array name="timezone">
+		<item>Pacific/Midway</item>
+		<item>Pacific/Honolulu</item>
+		<item>Pacific/Marquesas</item>
+		<item>Pacific/Gambier</item>
+		<item>America/Ensenada</item>
+		<item>America/Hermosillo</item>
+		<item>America/Bahia_Banderas</item>
+		<item>Canada/Eastern</item>
+		<item>Brazil/West</item>
+		<item>Canada/Newfoundland</item>
+		<item>Atlantic/Stanley</item>
+		<item>Brazil/DeNoronha</item>
+		<item>Atlantic/Cape_Verde</item>
+		<item>Europe/Belfast</item>
+		<item>Europe/Dublin</item>
+		<item>Africa/Blantyre</item>
+		<item>Africa/Asmara</item>
+		<item>Asia/Baku</item>
+		<item>Indian/Kerguelen</item>
+		<item>Asia/Calcutta</item>
+		<item>Asia/Kathmandu</item>
+		<item>Indian/Chagos</item>
+		<item>Asia/Rangoon</item>
+		<item>Antarctica/Davis</item>
+		<item>Asia/Taipei</item>
+		<item>Australia/Eucla</item>
+		<item>Pacific/Palau</item>
+		<item>Australia/Darwin</item>
+		<item>Australia/Lindeman</item>
+		<item>Australia/LHI</item>
+		<item>Pacific/Bougainville</item>
+		<item>Pacific/Fiji</item>
+	</string-array>
+</resources>

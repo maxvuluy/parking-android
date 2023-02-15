@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<import type="android.view.View" />
+
+		<variable
+			name="parkingData"
+			type="com.github.maxvuluy.parking.list.ParkingData" />
+
+	</data>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="8dp"
+		android:background="@drawable/background"
+		android:padding="8dp">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/layoutId"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			app:layout_constraintBottom_toTopOf="@id/textAddress"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<TextView
+				android:id="@+id/textId"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@{parkingData.id}"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@id/textName"
+				app:layout_constraintHorizontal_chainStyle="spread_inside"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:text="003" />
+
+			<TextView
+				android:id="@+id/textName"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@{parkingData.name}"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toEndOf="@id/textId"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:text="臺北市災害應變中心地下停車場" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+		<TextView
+			android:id="@+id/textAddress"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:text="@{parkingData.address}"
+			app:layout_constraintBottom_toTopOf="@id/layoutCar"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/layoutId"
+			tools:text="莊敬路391巷11弄2號地下" />
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/layoutCar"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="8dp"
+			app:layout_constraintBottom_toTopOf="@id/layoutChargeStation"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/textAddress"
+			app:layout_goneMarginBottom="0dp">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/layoutTotal"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@id/layoutAvailable"
+				app:layout_constraintHorizontal_chainStyle="spread_inside"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<TextView
+					android:id="@+id/textTotalName"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="總車位："
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toStartOf="@id/textTotal"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/textTotal"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@{Integer.toString(parkingData.totalCar)}"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toEndOf="@id/textTotalName"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:text="169" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/layoutAvailable"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toEndOf="@id/layoutTotal"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<TextView
+					android:id="@+id/textAvailableName"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="可用車位："
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toStartOf="@id/textAvailable"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/textAvailable"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@{Integer.toString(parkingData.availableCar)}"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toEndOf="@id/textAvailableName"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:text="169" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/layoutChargeStation"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:visibility="@{parkingData.chargeStation ? View.VISIBLE : View.GONE}"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/layoutCar">
+
+			<TextView
+				android:id="@+id/textChargeStation"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="充電車位"
+				app:layout_constraintBottom_toTopOf="@id/layoutStatus"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/layoutStatus"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/textChargeStation">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:id="@+id/layoutStandby"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toStartOf="@id/layoutCharging"
+					app:layout_constraintHorizontal_chainStyle="spread_inside"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent">
+
+					<TextView
+						android:id="@+id/textStandbyName"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="待機中："
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toStartOf="@id/textStandby"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/textStandby"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@{Integer.toString(parkingData.standby)}"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toEndOf="@id/textStandbyName"
+						app:layout_constraintTop_toTopOf="parent"
+						tools:text="2" />
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:id="@+id/layoutCharging"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toEndOf="@id/layoutStandby"
+					app:layout_constraintTop_toTopOf="parent">
+
+					<TextView
+						android:id="@+id/textChargingName"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="充電中："
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toStartOf="@id/textCharging"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/textCharging"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@{Integer.toString(parkingData.charging)}"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toEndOf="@id/textChargingName"
+						app:layout_constraintTop_toTopOf="parent"
+						tools:text="0" />
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
