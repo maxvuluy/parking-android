@@ -29,31 +29,46 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent">
 
-			<EditText
-				android:id="@+id/editUsername"
+			<com.google.android.material.textfield.TextInputLayout
+				android:id="@+id/layoutUsername"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:hint="Username"
-				android:inputType="textEmailAddress"
-				android:text="@={viewModel.username}"
-				android:textSize="24sp"
-				app:layout_constraintBottom_toTopOf="@id/editPassword"
+				android:layout_marginBottom="8dp"
+				app:layout_constraintBottom_toTopOf="@id/layoutPassword"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
+				app:layout_constraintTop_toTopOf="parent">
 
-			<EditText
-				android:id="@+id/editPassword"
+				<EditText
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:hint="Username"
+					android:inputType="textEmailAddress"
+					android:text="@={viewModel.username}"
+					android:textSize="24sp" />
+
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<com.google.android.material.textfield.TextInputLayout
+				android:id="@+id/layoutPassword"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:hint="Password"
-				android:inputType="textPassword"
-				android:text="@={viewModel.password}"
-				android:textSize="24sp"
+				android:layout_marginTop="8dp"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@id/editUsername" />
+				app:layout_constraintTop_toBottomOf="@id/layoutUsername"
+				app:passwordToggleEnabled="true">
+
+				<EditText
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:hint="Password"
+					android:inputType="textPassword"
+					android:text="@={viewModel.password}"
+					android:textSize="24sp" />
+
+			</com.google.android.material.textfield.TextInputLayout>
 
 		</androidx.constraintlayout.widget.ConstraintLayout>
 

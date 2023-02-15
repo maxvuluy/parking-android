@@ -33,24 +33,29 @@
 			android:layout_height="match_parent"
 			app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-			<Spinner
-				android:id="@+id/spinnerTimezone"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:entries="@array/timezone"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
-
 			<TextView
+				android:id="@+id/textUsername"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginBottom="32dp"
 				android:text="@{viewModel.username}"
 				app:layout_constraintBottom_toTopOf="@id/spinnerTimezone"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintVertical_chainStyle="packed" />
+
+			<Spinner
+				android:id="@+id/spinnerTimezone"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="32dp"
+				android:entries="@array/timezone"
+				android:selectedItem="@={viewModel.timezone}"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/textUsername" />
 
 		</androidx.constraintlayout.widget.ConstraintLayout>
 

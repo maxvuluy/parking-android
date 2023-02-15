@@ -4,15 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemSelectedListener
-import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import com.github.maxvuluy.parking.databinding.FragmentTimezoneBinding
 
-class TimezoneFragment : Fragment(), OnItemSelectedListener {
+class TimezoneFragment : Fragment() {
 
 	companion object {
 		fun newInstance() = TimezoneFragment()
@@ -43,20 +40,7 @@ class TimezoneFragment : Fragment(), OnItemSelectedListener {
 			toolbar.setNavigationOnClickListener {
 				parentFragmentManager.popBackStack()
 			}
-
-			val adapter = spinnerTimezone.adapter as ArrayAdapter<String>
-			spinnerTimezone.setSelection(adapter.getPosition(this@TimezoneFragment.viewModel.timezone))
-			spinnerTimezone.onItemSelectedListener = this@TimezoneFragment
 		}
-	}
-
-	override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-		val adapter = parent?.adapter ?: return
-		viewModel.onTimezoneSelected(adapter.getItem(position) as String)
-	}
-
-	override fun onNothingSelected(parent: AdapterView<*>?) {
-
 	}
 
 }

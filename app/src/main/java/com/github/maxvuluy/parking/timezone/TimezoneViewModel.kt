@@ -3,6 +3,7 @@ package com.github.maxvuluy.parking.timezone
 import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.maxvuluy.parking.ParkingApplication
 import com.github.maxvuluy.parking.RpcCall
@@ -19,8 +20,21 @@ class TimezoneViewModel(application: Application) : AndroidViewModel(application
 
 	val username
 		get() = getApplication<ParkingApplication>().userData?.username
-	val timezone
-		get() = getApplication<ParkingApplication>().userData?.timezone
+	val timezone = MutableLiveData(getApplication<ParkingApplication>().userData?.timezone)
+
+	init {
+		timezone.observeForever {
+			if (it == null || it == getApplication<ParkingApplication>().userData?.timezone) {
+				return@observeForever
+			}
+
+			viewModelScope.launch {
+				if (updateTimezone(it) == null) {
+					Toast.makeText(getApplication(), "更新時區失敗", Toast.LENGTH_SHORT).show()
+				}
+			}
+		}
+	}
 
 	private suspend fun updateTimezone(timezone: String): UserData? {
 		val userData = getApplication<ParkingApplication>().userData ?: return null
@@ -41,18 +55,6 @@ class TimezoneViewModel(application: Application) : AndroidViewModel(application
 		} catch (e: JSONException) {
 			e.printStackTrace()
 			null
-		}
-	}
-
-	fun onTimezoneSelected(timezone: String) {
-		if (timezone == getApplication<ParkingApplication>().userData?.timezone) {
-			return
-		}
-
-		viewModelScope.launch {
-			if (updateTimezone(timezone) == null) {
-				Toast.makeText(getApplication(), "更新時區失敗", Toast.LENGTH_SHORT).show()
-			}
 		}
 	}
 
